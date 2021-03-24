@@ -1,187 +1,161 @@
-## 展示
-* 演示地址：https://show.cool-admin.com
-* 文档地址：https://docs.cool-admin.com
-* 官网：https://www.cool-admin.com
+<p align="center">
+  <a href="https://midwayjs.org/" target="blank"><img src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/logo.png" width="200" alt="Midway Logo" /></a>
+</p>
 
-## 技术选型
-Node版后台基础框架基于[Egg.js](https://eggjs.org/zh-cn/)(阿里出品)
-* 基础：**[egg.js](https://eggjs.org/zh-cn/)**
-* 数据：**[typeorm](https://typeorm.io)**
-* 缓存：**[egg-redis](https://www.npmjs.com/package/egg-redis)** 
-* 鉴权：**[egg-jwt](https://www.npmjs.com/package/egg-jwt)** 
-* 网络：**[axios](https://www.npmjs.com/package/axios)** 
+<p align="center">cool-admin(midway版)一个很酷的后台权限管理系统，开源免费，模块化、插件化、极速开发CRUD，方便快速构建迭代后台管理系统，支持serverless、docker、普通服务器等多种方式部署
+到 <a href="https://bbs.cool-js.com" target="_blank">论坛</a> 进一步了解
+<p align="center">
+    <a href="https://github.com/cool-team-official/cool-admin-midway/blob/master/LICENSE" target="_blank"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="GitHub license" />
+    <a href=""><img src="https://img.shields.io/github/package-json/v/cool-team-official/cool-admin-midway?style=flat-square" alt="GitHub tag"></a>
+    <img src="https://img.shields.io/github/last-commit/cool-team-official/cool-admin-midway?style=flat-square" alt="GitHub tag"></a>
+</p>
 
-## 核心组件
-独有cool-admin.com发布的npm组件
-* 路由：**[egg-cool-router](https://www.npmjs.com/package/egg-cool-router)**
-* 控制器：**[egg-cool-controller](https://www.npmjs.com/package/egg-cool-controller)**
-* 服务层：**[egg-cool-service](https://www.npmjs.com/package/egg-cool-service)** 
-* 缓存：**[egg-cool-cache](https://www.npmjs.com/package/egg-cool-cache)** 
-* 模型：**[egg-cool-entity](https://www.npmjs.com/package/egg-cool-entity)** 
-* 支付 **[egg-cool-pay](https://www.npmjs.com/package/egg-cool-pay)** 
-* 搜索 **[egg-cool-es](https://www.npmjs.com/package/egg-cool-es)** 
-。。。。。。
+## 技术栈
 
-## 开发交流微信群
-![微信](https://cool-comm.oss-cn-shenzhen.aliyuncs.com/WechatIMG22.jpeg?x-oss-process=image/resize,w_300)
+* 后端：**`node.js` `midway.js` `egg.js` `mysql` `typescript`**
+* 前端：**`vue.js` `element-ui` `jsx` `vuex` `vue-router`**
+
+如果你是前端，后端的这些技术选型对你是特别友好的，前端开发者可以较快速地上手。
+如果你是后端，Typescript的语法又跟java、php等特别类似，一切看起来也是那么得熟悉。
+
+<!-- 在此次添加使用文档 -->
+## 演示
+[https://show.cool-admin.com](https://show.cool-admin.com)
+
+* 账户：admin
+* 密码：123456
+
+<img src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/home-mini.png" alt="Admin Home"></a>
+#### 文档
+[https://admin.cool-js.com](https://admin.cool-js.com)
+
+#### 项目前端
+
+[https://github.com/cool-team-official/cool-admin-vue](https://github.com/cool-team-official/cool-admin-vue)
+
+## QQ群
+2群：539478405
+
+## 微信群
+
+<img width="260" src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/wechat.jpeg" alt="Admin Wechat"></a>
+
+## 微信公众号
+
+<img width="260" src="https://cool-show.oss-cn-shanghai.aliyuncs.com/admin/mp.jpg" alt="Admin Wechat"></a>
+
 
 ## 运行
- 环境 `Node.js>=8.9.0` `Redis` `mysql`
- 
- 新建并导入数据库,修改数据库连接信息
- 
- 推荐使用`yarn`
- 
+
+#### 修改数据库配置，配置文件位于`src/config/config.local.ts`
+
+数据库为mysql(`>=5.7版本`)，node版本(`>=12.x`)，首次启动会自动初始化并导入数据
+
 ```js
- git clone https://github.com/apgzs/cool-admin-api.git
- cd cool-admin-api
- yarn
- yarn dev
- http://localhost:7001
-```
- 
- 或者`npm`
- 
-```js 
- git clone https://github.com/apgzs/cool-admin-api.git
- cd cool-admin-api
- npm install
- npm run dev
- http://localhost:7001
-```
-
-
- ##视频教程:
-
- **cool-admin后端简单入门视频(快速写6个api接口)：https://www.bilibili.com/video/BV1SE411j74K**
-
- **cool-admin前后端配合使用：https://www.bilibili.com/video/av90478011/**
-
- **cool-admin前端crud内部培训教程：https://www.bilibili.com/video/av89512654/**
-
- ## 数据模型
-  数据模型必须放在`app/entities/*`下，否则[typeorm](https://typeorm.io "typeorm")无法识别，如:
-```js
- import { Entity, Column, Index } from 'typeorm';
- import { BaseEntity } from 'egg-cool-entity';
- /**
-  * 系统角色
-  */
- @Entity({ name: 'sys_role' })
- export default class SysRole extends BaseEntity {
-     // 名称
-     @Index({ unique: true })
-     @Column()
-     name: string;
-     // 角色标签
-     @Index({ unique: true })
-     @Column({ nullable: true })
-     label: string;
-     // 备注
-     @Column({ nullable: true })
-     remark: string;
- }
-```
-新建完成运行代码，就可以看到数据库新建了一张`sys_role`表，如不需要自动创建`config`文件夹下修改[typeorm](https://typeorm.io "typeorm")的配置文件
-
-## 控制器
-有了数据表之后，如果希望通过接口对数据表进行操作，我们就必须在`controller`文件夹下新建对应的控制器，如：
-```js
-import { BaseController } from 'egg-cool-controller';
-import { Context } from 'egg';
-import routerDecorator from 'egg-cool-router';
-import { Brackets } from 'typeorm';
-/**
- * 系统-角色
- */
-@routerDecorator.prefix('/admin/sys/role', [ 'add', 'delete', 'update', 'info', 'list', 'page' ])
-export default class SysRoleController extends BaseController {
-    constructor (ctx: Context) {
-        super(ctx);
-        this.setEntity(this.ctx.repo.sys.Role);
-        this.setPageOption({
-            keyWordLikeFields: [ 'name', 'label' ],
-            where: new Brackets(qb => {
-                qb.where('id !=:id', { id: 1 });
-            }),
-        });//分页配置（可选）
-        this.setService(this.service.sys.role);//设置自定义的service（可选）
-    }
+config.orm = {
+    type: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username: 'root',
+    password: '',
+    database: 'cool-admin',
+    synchronize: true,
+    logging: true,
 }
 ```
+
+#### 安装依赖并运行
+
+```bash
+$ npm i
+$ npm run dev
+$ open http://localhost:8001/
+```
+
+注： `npm i`如果安装失败可以尝试使用[cnpm](https://developer.aliyun.com/mirror/NPM?from=tnpm)，或者切换您的镜像源
+
+## CURD(快速增删改查)
+
+大部分的后台管理系统，或者API服务都是对数据进行管理，所以可以看到大量的CRUD场景(增删改查)，cool-admin对此进行了大量地封装，让这块的编码量变得极其地少。
+
+
+#### 新建一个数据表
+
+`src/modules/demo/entity/goods.ts`，项目启动数据库会自动创建该表，无需手动创建
+
+```ts
+import { EntityModel } from '@midwayjs/orm';
+import { BaseEntity } from 'midwayjs-cool-core';
+import { Column } from 'typeorm';
+
+/**
+ * 商品
+ */
+@EntityModel('demo_app_goods')
+export class DemoAppGoodsEntity extends BaseEntity {
+
+    @Column({ comment: '标题' })
+    title: string;
+
+    @Column({ comment: '图片' })
+    pic: string;
+
+    @Column({ comment: '价格', type: 'decimal', precision: 5, scale: 2 })
+    price: number;
+
+}
+
+```
+
+#### 编写api接口
+
+`src/modules/demo/controller/app/goods.ts`，快速编写6个api接口
+
+```ts
+import { Provide } from '@midwayjs/decorator';
+import { CoolController, BaseController } from 'midwayjs-cool-core';
+import { DemoAppGoodsEntity } from '../../entity/goods';
+
+/**
+ * 商品
+ */
+@Provide()
+@CoolController({
+  api: ['add', 'delete', 'update', 'info', 'list', 'page'],
+  entity: DemoAppGoodsEntity
+})
+export class DemoAppGoodsController extends BaseController {
+  /**
+   * 其他接口
+   */
+  @Get('/other')
+  async other() {
+    return this.ok('hello, cool-admin!!!');
+  }
+}
+```
+
 这样我们就完成了6个接口的编写，对应的接口如下：
-* **`/admin/sys/role/add`** 新增
-* **`/admin/sys/role/delete`** 删除
-* **`/admin/sys/role/update`** 更新
-* **`/admin/sys/role/info`** 单个信息
-* **`/admin/sys/role/list`** 列表信息
-* **`/admin/sys/role/page`** 分页查询(包含模糊查询、字段全匹配等)
 
-#### PageOption配置参数
+- `POST /app/demo/goods/add` 新增
+- `POST /app/demo/goods/delete` 删除
+- `POST /app/demo/goods/update` 更新
+- `GET  /app/demo/goods/info` 单个信息
+- `POST /app/demo/goods/list` 列表信息
+- `POST /app/demo/goods/page` 分页查询(包含模糊查询、字段全匹配等)
 
-| 参数  | 类型  | 说明  |
-| ------------ | ------------ | ------------ |
-| keyWordLikeFields  | 数组  | 模糊查询需要匹配的字段，如`[ 'name','phone' ]` ,这样就可以模糊查询`姓名、手机`两个字段了  |
-| where | TypeORM Brackets对象  | 固定where条件设置，详见[typeorm](https://typeorm.io/#/select-query-builder "typeorm") |
-| fieldEq | 数组 | 动态条件全匹配，如需要筛选用户状态`status`，就可以设置成`['status']`,此时接口就可以接受`status`的值并且对数据有过滤效果  |
-| addOrderBy  |  对象 | 排序条件可传多个，如`{ sortNum:asc, createTime:desc }`  |
 
-## 数据缓存
-有些业务场景，我们并不希望每次请求接口都需要操作数据库，如：今日推荐、上个月排行榜等，数据存储在`redis`，注：缓存注解只在`service`层有效
-```js
-import { BaseService } from 'egg-cool-service';
-import { Cache } from 'egg-cool-cache';
-/**
- * 业务-排行榜服务类
- */
-export default class BusRankService extends BaseService {
-    /**
-     * 上个月榜单
-     */
-    @Cache({ ttl: 1000 }) // 表示缓存
-    async rankList () {
-        return [ '程序猿1号', '程序猿2号', '程序猿3号' ];
-    }
-}
+### 部署
+
+```bash
+$ npm start
+$ npm stop
 ```
-#### Cache配置参数
-| 参数  | 类型  | 说明  |
-| ------------ | ------------ | ------------ |
-| resolver  | 数组  | 方法参数获得，生成key用， `resolver: (args => {return args[0];}),` 这样就可以获得方法的第一个参数作为缓存`key` |
-|  ttl |  数字 |  缓存过期时间，单位：`秒` |
-|  url | 字符串  |  请求url包含该前缀才缓存，如`/api/*`请求时缓存，`/admin/*`请求时不缓存 |
 
-## 路由
-[egg.js](https://eggjs.org/zh-cn/)原生的路由写法过于繁琐，`cool-admin`的路由支持`BaseController`还有其他原生支持具体参照[egg.js路由](https://eggjs.org/zh-cn/basics/router.html)
+### 内置指令
 
-## 自定义sql查询
-除了单表的简单操作，真实的业务往往需要对数据库做一些复杂的操作。这时候我们可以在`service`自定义SQL，如
-```js
-async page (query) {
-    const { keyWord, status } = query;
-    const sql = `
-    SELECT
-        a.*,
-        GROUP_CONCAT(c.name) AS roleName
-    FROM
-        sys_user a
-        LEFT JOIN sys_user_role b ON a.id = b.userId
-        LEFT JOIN sys_role c ON b.roleId = c.id
-    WHERE 1 = 1
-        ${ this.setSql(status, 'and a.status = ?', [ status ]) }
-        ${ this.setSql(keyWord, 'and (a.name LIKE ? or a.username LIKE ?)', [ `%${ keyWord }%`, `%${ keyWord }%` ]) }
-        ${ this.setSql(true, 'and a.id != ?', [ 1 ]) }
-    GROUP BY a.id`;
-    return this.sqlRenderPage(sql, query);
-}
-```
-### this.setSql()设置参数
-| 参数  | 类型  | 说明  |
-| ------------ | ------------ | ------------ |
-| condition  | 布尔型  | 只有满足改条件才会拼接上相应的sql和参数 |
-|  sql |  字符串 |  需要拼接的参数 |
-|  params | 数组  |  相对应的参数 |
+- 使用 `npm run lint` 来做代码风格检查。
+- 使用 `npm test` 来执行单元测试。
 
 
-
-
+[midway]: https://midwayjs.org
