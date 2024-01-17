@@ -1,6 +1,6 @@
-# Hypa-frontend: Enterprise-Level Backend Permission Management System
+# Hypa-frontend: Backend Permission Management System
 
-Hypa-frontend is at the forefront of backend permission management, providing an open-source, cost-effective solution designed for the modern enterprise. Its modular and plugin-oriented architecture, alongside the accelerated development of CRUD operations, makes it an ideal choice for businesses looking to streamline the construction and evolution of their backend management systems.
+Hypa-frontend is at the forefront of backend permission management, providing an open-source, cost-effective solution designed for the modern use. Its modular and plugin-oriented architecture, alongside the accelerated development of CRUD operations, makes it an ideal choice for businesses looking to streamline the construction and evolution of their backend management systems.
 
 ## Features
 
@@ -22,3 +22,13 @@ To integrate Hypa-frontend into your project, follow these steps:
 ```bash
 npm install
 npm run dev
+
+## Disclaimer
+
+The information provided in this README is for general information purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the software or the information, products, services, or related graphics contained in this README for any purpose. Any reliance you place on such information is therefore strictly at your own risk.
+
+## License
+
+Hypa-frontend is open-source software licensed under the MIT License. A copy of the MIT License is provided in the LICENSE file accompanying this project, or you can obtain one at [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT).
+
+Use of the software is governed by the terms of the MIT License. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the conditions of the MIT License are met.
